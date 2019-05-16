@@ -9,11 +9,11 @@ public class Arme {
         this.nom = nom;
         this.niveauattaque = niveauattaque;
     }
+    public Arme(){}
 
     public String getName() {
         return nom;
     }
-
     public int getNiveauattaque() {
         return niveauattaque;
     }

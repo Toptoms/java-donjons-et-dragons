@@ -2,12 +2,12 @@ package personnage;
 
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Start {
 
-    private ArrayList<Personnage> personnagetab = new ArrayList();
+    private ArrayList<Personnage> personnagetab = new ArrayList<>();
+    private ArrayList<String> tableautab = new ArrayList<>();
 
     public void startmenu() {
         int choice;
@@ -156,7 +156,7 @@ public class Start {
 
     }
 
-    private static int demandeint(String question)  throws InputMismatchException {
+    private static int demandeint(String question){
         int rep;
         try {
         Scanner sc = new Scanner(System.in);
@@ -183,4 +183,14 @@ public class Start {
         }
         return value;
     }
+
+    private String plateau(){
+
+        for (
+             ) {
+
+        }
+
+    }
+
 }

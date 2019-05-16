@@ -30,6 +30,8 @@ public class Guerrier extends Personnage {
         return arme;
     }
 
+    public void setArme(Arme arme){this.arme = arme;}
+
 
 
     public String toString() {
