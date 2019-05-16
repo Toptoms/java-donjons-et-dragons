@@ -1,15 +1,15 @@
-package personnage.arme;
+package personnage.equipement;
 
-public class Arme {
+public class Sort {
     private String nom;
     private int niveauattaque;
 
 
-    public Arme(String nom, int niveauattaque) {
+    public Sort(String nom, int niveauattaque) {
         this.nom = nom;
         this.niveauattaque = niveauattaque;
     }
-    public Arme(){}
+    public Sort(){}
 
     public String getName() {
         return nom;

@@ -1,13 +1,12 @@
 package personnage;
 
 
-import personnage.arme.Arme;
+import personnage.equipement.Arme;
 
 public class Guerrier extends Personnage {
 
     private String bouclier;
     private Arme arme;
-
 
     public Guerrier() {
     }
@@ -32,13 +31,11 @@ public class Guerrier extends Personnage {
 
     public void setArme(Arme arme){this.arme = arme;}
 
-
-
     public String toString() {
         return super.toString() +
                 "\n5 nom du bouclier : " + this.bouclier +
-                "\n6 nom arme : " + this.arme.getName() +
-                "\n7 nineau arme : " + this.arme.getNiveauattaque();
+                "\n6 nom equipement : " + this.arme.getName() +
+                "\n7 nineau equipement : " + this.arme.getNiveauattaque();
 
     }
 }
