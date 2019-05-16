@@ -1,15 +1,13 @@
 package personnage;
 
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Start {
-    private Personnage[] personnagetab;
-    private int i;
 
-    public Start(int size) {
-        personnagetab = new Personnage[size];
-    }
+    private ArrayList<Personnage> personnagetab = new ArrayList();
 
     public void startmenu() {
         int choice;
@@ -51,26 +49,25 @@ public class Start {
                 String nomarme = demande("renseigner le nom de l'arme :");
                 int niveauarme = questionValeur("parametrer le nieveau de l'arme :", 5, 10);
                 Personnage guerrier = new Guerrier(nom, image, vie, attaque, bouclier, nomarme, niveauarme);
-                personnagetab[i] = guerrier;
+                personnagetab.add(guerrier);
             } else {
                 String sort = demande("nom d'un sort :");
                 String nomphiltre = demande("renseigner le nom du philtre :");
                 int niveauphiltre = questionValeur("parametrer le nieveau du philtre :", 5, 10);
                 Personnage magicien = new Guerrier(nom, image, vie, attaque, sort, nomphiltre, niveauphiltre);
-                personnagetab[i] = magicien;
+                personnagetab.add(magicien);
             }
-            i = i + 1;
-            System.out.println(personnagetab[i]);
+            System.out.println(personnagetab.get(personnagetab.size()-1));
         }
 
     private void affichmodifsupperso() {
         int choice;
         int personnagechoisi = choixpersonnage();
         do {
-            if (personnagetab[personnagechoisi].getClass().getSimpleName().equals("Guerrier")) {
-                System.out.println(" Guerrier : " + personnagetab[personnagechoisi]);
+            if (personnagetab.get(personnagechoisi).getClass().getSimpleName().equals("Guerrier")) {
+                System.out.println(" Guerrier : " + personnagetab.get(personnagechoisi));
             } else
-                System.out.println(" Magicien : " + personnagetab[personnagechoisi]);
+                System.out.println(" Magicien : " + personnagetab.get(personnagechoisi));
 
             choice = demandeint("1 Modifier \n" + "2 Supprimer \n" + "3 Retour au menu");
             switch (choice) {
@@ -94,33 +91,33 @@ public class Start {
             choiceint = demandeint("Que veux tu modifier ? 0 pour sortir");
             switch (choiceint) {
                 case 1:
-                    personnagetab[personnagechoisi].setNom(demande("changer de nom"));
+                    personnagetab.get(personnagechoisi).setNom(demande("changer de nom"));
                     break;
                 case 2:
-                    personnagetab[personnagechoisi].setImage(demande("changer l'image"));
+                    personnagetab.get(personnagechoisi).setImage(demande("changer l'image"));
                     break;
                 case 3:
-                    personnagetab[personnagechoisi].setVie(questionValeur("changer la vie :", 5, 10));
+                    personnagetab.get(personnagechoisi).setVie(questionValeur("changer la vie :", 5, 10));
                     ;
                     break;
                 case 4:
-                    personnagetab[personnagechoisi].setAttaque(questionValeur("parametrer ton attaque :", 5, 10));
+                    personnagetab.get(personnagechoisi).setAttaque(questionValeur("parametrer ton attaque :", 5, 10));
                     break;
                 case 5:
-                    if (personnagetab[personnagechoisi].getClass().getSimpleName().equals("Guerrier")) {
-                        ((Guerrier) personnagetab[personnagechoisi]).setBouclier(demande("changer le nom du bouclier :"));
+                    if (personnagetab.get(personnagechoisi).getClass().getSimpleName().equals("Guerrier")) {
+                        ((Guerrier) personnagetab.get(personnagechoisi)).setBouclier(demande("changer le nom du bouclier :"));
                     } else
                         //((Magicien) personnagetab[personnagechoisi]).setSort(demande("changer le nom du sort :")) ;
                         break;
                 case 6:
-                    if (personnagetab[personnagechoisi].getClass().getSimpleName().equals("Guerrier")) {
-                        ((Guerrier) personnagetab[personnagechoisi]).getArme().setNom(demande("renseigner le nom de l'arme :"));
+                    if (personnagetab.get(personnagechoisi).getClass().getSimpleName().equals("Guerrier")) {
+                        ((Guerrier) personnagetab.get(personnagechoisi)).getArme().setNom(demande("renseigner le nom de l'arme :"));
                     } else
                         // ((Magicien) personnagetab[personnagechoisi]).getPhiltre().setNom(demande("changer le nom du filtre :"));
                         break;
                 case 7:
-                    if (personnagetab[personnagechoisi].getClass().getSimpleName().equals("Guerrier")) {
-                        ((Guerrier) personnagetab[personnagechoisi]).getArme().setNiveauattaque(questionValeur(
+                    if (personnagetab.get(personnagechoisi).getClass().getSimpleName().equals("Guerrier")) {
+                        ((Guerrier) personnagetab.get(personnagechoisi)).getArme().setNiveauattaque(questionValeur(
                                 "parametrer le nieveau de l'arme :", 5, 10));
                     } else
                         //((Magicien) personnagetab[personnagechoisi]).getPhiltre().setNiveauattaque(demande("changer le nom du filtre :"));
@@ -132,12 +129,12 @@ public class Start {
     private int choixpersonnage() {
         int choiceint;
         int i;
-        for (i = 0; i < personnagetab.length; i++) {
-            if (personnagetab[i] != null) {
-                if (personnagetab[i].getClass().getSimpleName().equals("Guerrier")) {
-                    System.out.println(i + " Guerrier : " + personnagetab[i].getName());
+        for (i = 0; i < personnagetab.size(); i++) {
+            if (personnagetab.get(i) != null) {
+                if (personnagetab.get(i).getClass().getSimpleName().equals("Guerrier")) {
+                    System.out.println(i + " Guerrier : " + personnagetab.get(i).getName());
                 } else
-                    System.out.println(i + " Magicien : " + personnagetab[i].getName());
+                    System.out.println(i + " Magicien : " + personnagetab.get(i).getName());
             }
         }
         do {
@@ -149,7 +146,7 @@ public class Start {
     }
 
     private void supprimer(int personnagechoisi) {
-        personnagetab[personnagechoisi] = null;
+        personnagetab.remove(personnagechoisi);
     }
 
     private static String demande(String question) {
